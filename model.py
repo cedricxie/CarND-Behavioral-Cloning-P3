@@ -3,13 +3,14 @@ import numpy as np
 import csv
 from sklearn.model_selection import train_test_split
 
+# Read in data
 path = './data/'
 lines =[]
 with open(path+'driving_log.csv') as csvfile:
     reader = csv.reader(csvfile)
     for line in reader:
         lines.append(line)
-
+# Split data into training and validation sets
 train_lines, validation_lines = train_test_split(lines[1:], test_size=0.2)
 
 from keras.models import Sequential
@@ -23,8 +24,10 @@ import cv2
 import os
 import sys
 
+# Correction factor for images from left and right cameras
 steering_correction = 0.3
 
+# Generator definition
 def generator(samples, batch_size=32):
     num_samples = len(samples)
     #print (num_samples)
@@ -56,10 +59,11 @@ def generator(samples, batch_size=32):
             y_train = np.array(steering_measurements)
             yield sklearn.utils.shuffle(X_train, y_train)
             
-# compile and train the model using the generator function
+# Define the generator functions
 train_generator = generator(train_lines, batch_size=32)
 validation_generator = generator(validation_lines, batch_size=32)
 
+# Define the model
 model = Sequential()
 # Preprocess incoming data, centered around zero with small standard deviation 
 model.add(Cropping2D(cropping=((50,20), (0,0)), input_shape=(160,320,3)))
