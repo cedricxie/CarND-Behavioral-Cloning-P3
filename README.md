@@ -32,7 +32,7 @@ My project includes the following files in addition to the original files from U
 * `model.py` A Pythong script to create and train the model
 * `model.h5` A trained convolution neural network 
 * `Behavior_Cloning_YX.ipynb` A Jupyter notebook with final model
-* `Video.mp4` A video file showing a car driving autonomously for a full lap. [Please also find it on Youtube following this link](https://youtu.be/z_Cth3Rxitw)
+* `Video.mp4` A video file showing a car driving autonomously for a full lap. [Please also find it on Youtube following this link (resubmitted version 2)](https://youtu.be/IKuauaKf24M)
 * `**README.md**` A report to summarize the results
 
 #### 2. Submission includes functional code

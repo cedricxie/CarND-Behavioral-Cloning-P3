@@ -56,6 +56,8 @@ def generator(samples, batch_size=32):
                 steering_measurements.append(measurement-steering_correction)
                 #print(i, batch_size, offset, num_samples)
             X_train = np.array(all_images)
+            # Convert the image from BGR to RGB format. Thanks for finding the bug in my code!
+            X_train = X_train[...,::-1]
             y_train = np.array(steering_measurements)
             yield sklearn.utils.shuffle(X_train, y_train)
             
